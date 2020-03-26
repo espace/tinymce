@@ -1,4 +1,3 @@
-import { Thunk } from '@ephox/katamari';
 import Element from './Element';
 import * as Node from './Node';
 import { document, Document, Node as DomNode, HTMLElement } from '@ephox/dom-globals';
@@ -15,9 +14,9 @@ const inBody = function (element: Element<DomNode>) {
   return dom !== undefined && dom !== null && dom.ownerDocument.body.contains(dom);
 };
 
-const body: () => Element<HTMLElement> = Thunk.cached(function () {
+const body: () => Element<HTMLElement> = function () {
   return getBody(Element.fromDom(document));
-});
+};
 
 const getBody = function (doc: Element<Document>) {
   const b = doc.dom().body;
